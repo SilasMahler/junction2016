@@ -7,12 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
-<body style="overflow: hidden; background-color: #1f1f1f">
-<div class="container-fluid" style="margin: 0; padding: 0;">
-<video width="100%" height="100%" autoplay onended="alert('go back')">
-    <source src="Explosion.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<body>
+<div class="container">
+    <h2 id="joke"></h2>
 </div>
+
+    <script>
+        $.ajax( {
+            url: "http://api.icndb.com/jokes/random?limitTo=[nerdy]",
+            dataType: "json",
+            success: function (data) {
+                $('#joke').text(data.value.joke);
+            }
+        });
+    </script>
 </body>
 </html>
