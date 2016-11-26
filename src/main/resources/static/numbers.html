@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digital BusStop</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="panel" id="numberpanel">
+            <div class="" id="numberwrapper">
+                <h1 id="numberquestion">Remember this number...</h1>
+                <br>
+                <h1 id="generatedNumber"></h1>
+            </div>
+            <div class="form-group">
+                <label for="numberfield">Number:</label>
+                <input type="text" class="form-control" id="numberfield">
+            </div>
+            <div id="numberpad" class="row container">
+
+                <div id="container">
+                    <ul id="keyboard">
+                        <li id="key1" class="letter">1</li>
+                        <li id="key2" class="letter">2</li>
+                        <li id="key3" class="letter">3</li>
+                        <li id="key4" class="letter clearl">4</li>
+                        <li id="key5" class="letter">5</li>
+                        <li id="key6" class="letter">6</li>
+
+                        <li id="key7" class="letter clearl">7</li>
+                        <li id="key8" class="letter ">8</li>
+                        <li id="key9" class="letter">9</li>
+                        <li id="key0" class="letter">0</li>
+                        <li id="keyOk" class="switch">OK</li>
+                        <li id="keyNot" class="return">Not OK</li>
+                        <li id="keyBack" class="delete lastitem"><</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var random = Math.floor((Math.random() * 10000) + 1);
+        document.getElementById("generatedNumber").innerHTML = random;
+        $("#numberquestion").delay(5000).fadeOut();
+        $("#generatedNumber").delay(5000).fadeOut();
+
+        $("#numberfield").delay(6000).fadeIn();
+
+
+        $("#key0").onclick(function () {
+
+        })
+
+        $("#key1").onclick(function () {
+
+        })
+        $("#key2").onclick(function () {
+
+        })
+        $("#key3").onclick(function () {
+
+        })
+        $("#key4").onclick(function () {
+
+        })
+        $("#key5").onclick(function () {
+
+        })
+        $("#key6").onclick(function () {
+
+        })
+        $("#key7").onclick(function () {
+
+        })
+        $("#key8").onclick(function () {
+
+        })
+        $("#key9").onclick(function () {
+
+        })
+        $("#keyOk").onclick(function () {
+
+        })
+        $("#keyNot").onclick(function () {
+
+        })
+        $("#keyBack").onclick(function () {
+
+        })
+
+    });
+
+
+</script>
+</body>
+
+</html>
