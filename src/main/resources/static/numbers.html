@@ -19,8 +19,8 @@
                 <h1 id="generatedNumber"></h1>
             </div>
             <div class="form-group">
-                <label for="numberfield">Number:</label>
-                <input type="text" class="form-control" id="numberfield">
+                <h1 for="numberfield">Number:</h1>
+                <input type="number" class="form-control" id="numberfield">
             </div>
             <div id="numberpad" class="row container">
 
@@ -61,50 +61,62 @@
 
         $("#numberfield").delay(6000).fadeIn();
 
-        $("#key0").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 0;
+        $("#numberfield").val(10);
+
+
+        $("#key0").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 0);
         })
-        $("#key1").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 1;
+        $("#key1").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 1);
         })
-        $("#key2").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 2;
+        $("#key2").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 2);
         })
-        $("#key3").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 3;
+        $("#key3").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 3);
         })
-        $("#key4").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 4;
+        $("#key4").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 4);
         })
-        $("#key5").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 5;
+        $("#key5").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 5);
         })
-        $("#key6").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 6;
+        $("#key6").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 6);
         })
-        $("#key7").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 7;
+        $("#key7").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 7);
         })
-        $("#key8").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 8;
+        $("#key8").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 8);
         })
-        $("#key9").onclick(function () {
-            $("#numberfield").innerHTML = $("#numberfield").innerHTML + 9;
+        $("#key9").click(function () {
+            $("#numberfield").val($("#numberfield").val() + 9);
 
         })
-        $("#keyOk").onclick(function () {
-           if(Integer.parseInt($("#numberfield").innerHTML) ===  ;
+        $("#keyOk").click(function () {
+           if(Number(parseInt($("#numberfield").val())) ===  Number(random)){
+               mainScreen();//TODO Implement
+           }
 
         })
-        $("#keyNot").onclick(function () {
-
+        $("#keyNot").click(function () {
+            if(parseInt($("#numberfield").val()) !==  Number(random)){
+                mainScreen();//TODO Implement
+            }
         })
-        $("#keyBack").onclick(function () {
+        $("#keyBack").click(function () {
+            $("#numberfield").val("");
 
         })
 
     });
 
+
+    function mainScreen() {
+        alert("Back to the Mainscreen");
+    }
 
 </script>
 </body>
