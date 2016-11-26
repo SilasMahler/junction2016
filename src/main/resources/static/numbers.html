@@ -61,9 +61,6 @@
 
         $("#numberfield").delay(6000).fadeIn();
 
-        $("#numberfield").val(10);
-
-
         $("#key0").click(function () {
             $("#numberfield").val($("#numberfield").val() + 0);
         })
@@ -97,13 +94,12 @@
         })
         $("#keyOk").click(function () {
            if(Number(parseInt($("#numberfield").val())) ===  Number(random)){
-               mainScreen();//TODO Implement
+               mainScreen();
            }
-
         })
         $("#keyNot").click(function () {
             if(parseInt($("#numberfield").val()) !==  Number(random)){
-                mainScreen();//TODO Implement
+                mainScreen();
             }
         })
         $("#keyBack").click(function () {
