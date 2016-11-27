@@ -5,34 +5,55 @@
     <title>Digital BusStop</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        * { margin: 0; padding: 0; }
+        p { padding: 20px; }
+        #top {
+            background-color: transparent;
+            width: 100%;
+            z-index: 99;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #bottom {
+            background-color: transparent;
+            width: 100%;
+            z-index: 99;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
 </head>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+    google.load("jquery", "1.3.2");
+</script><script type="text/javascript">
+    $(function(){
+
+        var $window = $(window);
+        winHeight = $window.height();
+
+        $("#top").height(winHeight/2);
+        $("#bottom").height(winHeight/2);
+
+        $(window).resize(function(){
+
+            winHeight = $window.height();
+
+            $("#top").height(winHeight/2);
+            $("#bottom").height(winHeight/2);
+
+        });
+    });
+</script>
 <body>
 
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Titel und Schalter werden für eine bessere mobile Ansicht zusammengefasst -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Hide/show navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Digital BusStop</a>
-        </div>
-
-        <!-- Alle Navigationslinks, Formulare und anderer Inhalt werden hier zusammengefasst und können dann ein- und ausgeblendet werden -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">ToiletFinder</a></li>
-                <li><a href="#">VocabularyGame</a></li>
-                <li><a href="#">Random</a></li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<section id="top" onclick="javascript:window.location.href='upper.html'"></section>
+<section id="bottom" onclick="javascript:alert('unten')"></section>
+<div style="position: absolute; height: 100%; width: 100%; z-index: 9; background: #fff; top: 0; left: 0">
+        <img src="/img/dont.png" style="height:100%; display:block; margin: 40px auto">
 </body>
 </html>
