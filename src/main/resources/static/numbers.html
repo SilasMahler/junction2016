@@ -102,7 +102,7 @@
         })
         $("#keyOk").click(function () {
             if (Number(parseInt($("#numberfield").val())) === Number(random)) {
-                mainScreen();
+                timeoutFunction();
             }
             else{
                 falsch();
@@ -110,7 +110,7 @@
         })
         $("#keyNot").click(function () {
             if (parseInt($("#numberfield").val()) !== Number(random)) {
-                mainScreen();
+                timeoutFunction();
             }
             else{
                 falsch();
@@ -120,10 +120,6 @@
             $("#numberfield").val("");
         })
     });
-
-    function mainScreen() {
-        alert("Back to the Mainscreen");
-    }
 
     function falsch(){
 
@@ -137,7 +133,7 @@
         } else {
             timeoutFunction();
         }
-    }, 45);
+    }, 250);
 
     function timeoutFunction() {
         document.location.href = "index.html";
