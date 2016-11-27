@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digital BusStop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <style>
+        #newsList {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 id="source"></h1>
+        <ul id="newsList"></ul>
+    </div>
+
+    <p>News powered by <a href="http://newsapi.org">NewsApi.org</a></p>
+
+    <script>
+        var api_key = "023fb6dd1a164094b8ec83a687bda79d";
+        var sources = [
+            "bbc-news", "bbc-sport", "cnn", "nfl-news", "national-geographic", "mtv-news", "techcrunch"
+        ];
+        var source = sources[Math.floor((Math.random() * (sources.length - 1)) + 1)];
+        $.ajax( {
+            url: "https://newsapi.org/v1/articles",
+            type:"get",
+            data:{"source":source,"apiKey": api_key},
+            success: function (response) {
+                $('#source').text(source);
+                for (var i = 0; i < response.articles.length; i++) {
+                    $('#newsList').append("\<li><h2>" + response.articles[i].title + "\</h2></li>")
+                }
+            }
+        });
+    </script>
+</body>
+</html>
