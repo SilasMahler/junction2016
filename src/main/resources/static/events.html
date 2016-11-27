@@ -17,6 +17,11 @@
 <div class="container">
     <h1>Events</h1>
     <ul id="eventlist"></ul>
+    <div class="progress">
+        <div id="theBar" class="progress-bar progress-bar-info active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+
+        </div>
+    </div>
 </div>
 
     <script>
@@ -40,9 +45,16 @@
             }
         });
 
-        $(document).ready(function(){
-            setTimeout(timeoutFunction, 10000);
-        });
+        var i = 100;
+        var counterBack = setInterval(function () {
+            i--;
+            if (i >= 0) {
+                $('.progress-bar').css('width', i + '%');
+            } else {
+                timeoutFunction();
+            }
+
+        }, 100);
 
         function timeoutFunction() {
             document.location.href = "index.html";

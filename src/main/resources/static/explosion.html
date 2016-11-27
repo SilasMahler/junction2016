@@ -15,9 +15,16 @@
 </video>
 
     <script>
-        $(document).ready(function(){
-            setTimeout(timeoutFunction, 4500);
-        });
+        var i = 100;
+        var counterBack = setInterval(function () {
+            i--;
+            if (i >= 0) {
+                $('.progress-bar').css('width', i + '%');
+            } else {
+                timeoutFunction();
+            }
+
+        }, 45);
 
         function timeoutFunction() {
             document.location.href = "index.html";
