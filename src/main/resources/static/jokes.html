@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digital BusStop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2 id="joke"></h2>
+</div>
+
+    <script>
+        $.ajax( {
+            url: "http://api.icndb.com/jokes/random?limitTo=[nerdy]",
+            dataType: "json",
+            success: function (data) {
+                $('#joke').text(data.value.joke);
+            }
+        });
+    </script>
+</body>
+</html>
