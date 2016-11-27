@@ -13,6 +13,23 @@
     <source src="Explosion.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
+
+    <script>
+        var i = 100;
+        var counterBack = setInterval(function () {
+            i--;
+            if (i >= 0) {
+                $('.progress-bar').css('width', i + '%');
+            } else {
+                timeoutFunction();
+            }
+
+        }, 45);
+
+        function timeoutFunction() {
+            document.location.href = "index.html";
+        }
+    </script>
 </div>
 </body>
 </html>

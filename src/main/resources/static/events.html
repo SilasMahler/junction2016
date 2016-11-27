@@ -17,11 +17,16 @@
 <div class="container">
     <h1>Events</h1>
     <ul id="eventlist"></ul>
+    <div class="progress">
+        <div id="theBar" class="progress-bar progress-bar-info active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+
+        </div>
+    </div>
 </div>
 
     <script>
         $.ajax( {
-            url: "https://api.hel.fi/linkedevents/v1/event/?start=today",
+            url: "https://api.hel.fi/linkedevents/v1/event/?start=2016-11-27&max_duration=604800&sort=start_time",
             type:"get",
             //data:{"start":"today"},
             success: function (response) {
@@ -39,6 +44,21 @@
                 }
             }
         });
+
+        var i = 100;
+        var counterBack = setInterval(function () {
+            i--;
+            if (i >= 0) {
+                $('.progress-bar').css('width', i + '%');
+            } else {
+                timeoutFunction();
+            }
+
+        }, 100);
+
+        function timeoutFunction() {
+            document.location.href = "index.html";
+        }
     </script>
 
 </body>
