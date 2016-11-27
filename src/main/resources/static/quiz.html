@@ -29,21 +29,23 @@
     <script>
         var quiz = [
             {
-                "question":"What is 2 + 2?",
+                "question":"What is the capital of France?",
                 "answers": {
-                    "answer1":"1",
-                    "answer2":"2",
-                    "answer3":"3",
-                    "answer4":"4"
+                    "answer1":"Lyon",
+                    "answer2":"Toulouse",
+                    "answer3":"Paris",
+                    "answer4":"Venice",
+                    "correct":"Paris"
                 },
-                "correct":4
+                "correct":3
             },{
                 "question":"In which European city can you find the home of Anne Frank?",
                 "answers": {
                     "answer1":"Amsterdam",
                     "answer2":"Berlin",
                     "answer3":"London",
-                    "answer4":"Helsinki"
+                    "answer4":"Helsinki",
+                    "correct":"Amsterdam"
                 },
                 "correct":1
             },{
@@ -52,45 +54,20 @@
                     "answer1":"Eyjafjallaj\u00f6kull",
                     "answer2":"\u00d6r\u00e6faj\u00f6kull",
                     "answer3":"Lj\u00f3sufj\u00f6ll",
-                    "answer4":"Sn\u00e6fellsj\u00f6kull"
+                    "answer4":"Sn\u00e6fellsj\u00f6kull",
+                    "correct":"Eyjafjallaj\u00f6kull"
                 },
                 "correct":1
             },{
-                "question":"what is 2 + 2",
+                "question":"How many countries is have the Euro as their official currency? (1. January 2015)",
                 "answers": {
-                    "answer1":"1",
-                    "answer2":"2",
-                    "answer3":"3",
-                    "answer4":"4"
+                    "answer1":"17",
+                    "answer2":"18",
+                    "answer3":"19",
+                    "answer4":"20",
+                    "correct":"19"
                 },
-                "correct":4
-            },{
-                "question":"what is 2 + 2",
-                "answers": {
-                    "answer1":"1",
-                    "answer2":"2",
-                    "answer3":"3",
-                    "answer4":"4"
-                },
-                "correct":4
-            },{
-                "question":"what is 2 + 2",
-                "answers": {
-                    "answer1":"1",
-                    "answer2":"2",
-                    "answer3":"3",
-                    "answer4":"4"
-                },
-                "correct":4
-            },{
-                "question":"what is 2 + 2",
-                "answers": {
-                    "answer1":"1",
-                    "answer2":"2",
-                    "answer3":"3",
-                    "answer4":"4"
-                },
-                "correct":4
+                "correct":3
             }
         ];
         var selected;
@@ -102,14 +79,14 @@
             $('#answer2').text(quiz[selected].answers.answer2);
             $('#answer3').text(quiz[selected].answers.answer3);
             $('#answer4').text(quiz[selected].answers.answer4);
-            setTimeout(timeoutFunction, 30000);
+            setTimeout(timeoutFunction, 15000);
         });
 
         function checkAnswer1() {
             if (quiz[selected].correct == 1) {
                 $('#isCorrect').text("Correct");
             } else {
-                $('#isCorrect').text("Wrong");
+                $('#isCorrect').text("Wrong, " + quiz[selected].answers.correct);
             }
             disableButtons();
         }
@@ -118,7 +95,7 @@
             if (quiz[selected].correct == 2) {
                 $('#isCorrect').text("Correct");
             } else {
-                $('#isCorrect').text("Wrong");
+                $('#isCorrect').text("Wrong, " + quiz[selected].answers.correct);
             }
             disableButtons();
         }
@@ -127,7 +104,7 @@
             if (quiz[selected].correct == 3) {
                 $('#isCorrect').text("Correct");
             } else {
-                $('#isCorrect').text("Wrong");
+                $('#isCorrect').text("Wrong, " + quiz[selected].answers.correct);
             }
             disableButtons();
         }
@@ -136,7 +113,7 @@
             if (quiz[selected].correct == 4) {
                 $('#isCorrect').text("Correct");
             } else {
-                $('#isCorrect').text("Wrong");
+                $('#isCorrect').text("Wrong, " + quiz[selected].answers.correct);
             }
             disableButtons();
         }
