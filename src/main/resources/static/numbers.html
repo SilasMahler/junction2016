@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="style.css"/>
 
 </head>
@@ -14,12 +15,12 @@
     <div class="row">
         <div class="panel" id="numberpanel">
             <div class="" id="numberwrapper">
-                <h1 id="numberquestion">Remember this number...</h1>
-                <br>
-                <h1 id="generatedNumber"></h1>
+                <h1 id="numberquestion" >Remember this number? </h1>
+                <h1 id="generatedNumber" class="animated flash"></h1>
             </div>
+            <br>
             <div class="form-group">
-                <h1 for="numberfield">Number:</h1>
+                <h1 for="numberfield">Remembered:</h1>
                 <input type="number" class="form-control" id="numberfield">
             </div>
             <div id="numberpad" class="row container">
@@ -53,7 +54,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
+    $(document).onload(function () {
+        $("#numberfield").fadeOut();
+
+    })
     $(document).ready(function () {
+
         var random = Math.floor((Math.random() * 10000) + 1);
         document.getElementById("generatedNumber").innerHTML = random;
         $("#numberquestion").delay(5000).fadeOut();
