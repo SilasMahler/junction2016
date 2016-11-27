@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Digital BusStop</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="MinZoomIndicator.js"></script>
+    <script src="OverPassLayer.js"></script>
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    html, body, #map {
+        height: 100vh;
+        width: 100vw;
+    }
+</style>
+<body>
+<div class="progress">
+    <div id="theBar" class="progress-bar progress-bar-info active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+
+    </div>
+</div>
+<div id="map"></div>
+<script>
+    var map = L.map('map').setView([60.1671, 24.9792], 15);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+    var api = new L.OverPassLayer({
+        endpoint: "http://overpass-api.de/api/",
+        query: "node(BBOX)[amenity=toilets];out;",
+        callback: function(data) {
+            for(var i=0;i<data.elements.length;i++) {
+                var e = data.elements[i];
+                console.log(data);
+                console.log("fuck");
+                if (e.id in this.instance._ids) return;
+                this.instance._ids[e.id] = true;
+                var pos = new L.LatLng(e.lat, e.lon);
+                var popup = this.instance._poiInfo(e.tags,e.id);
+                var color = e.tags.collection_times ? 'green':'red';
+                var circle = L.marker(pos).bindPopup(popup);
+                this.instance.addLayer(circle);
+            }
+        },
+    });
+    map.addLayer(api);
+
+    var i = 100;
+    var counterBack = setInterval(function () {
+        i--;
+        if (i >= 0) {
+            $('.progress-bar').css('width', i + '%');
+        } else {
+            timeoutFunction();
+        }
+
+    }, 150);
+
+    function timeoutFunction() {
+        document.location.href = "index.html";
+    }
+</script>
+</body>
+</html>

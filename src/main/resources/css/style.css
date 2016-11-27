@@ -1,0 +1,10 @@
+* { margin: 0; padding: 0; }
+p { padding: 20px; }
+#top {
+    background-color: #000;
+    width: 100%;
+}
+#bottom {
+    background-color: #fff;
+    width: 100%;
+}
