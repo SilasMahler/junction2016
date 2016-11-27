@@ -2,52 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Digital BusStop</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="http://kartenkarsten.github.io/leaflet-layer-overpass/OverPassLayer.js"></script>
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="MinZoomIndicator.js"></script>
+    <script src="OverPassLayer.js"></script>
 </head>
 <style>
-    #map {
-        height: 400px;
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    html, body, #map {
+        height: 100vh;
+        width: 100vw;
     }
 </style>
 <body>
-
-
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Titel und Schalter werden für eine bessere mobile Ansicht zusammengefasst -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Hide/show navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Digital BusStop</a>
-        </div>
-
-        <!-- Alle Navigationslinks, Formulare und anderer Inhalt werden hier zusammengefasst und können dann ein- und ausgeblendet werden -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">ToiletFinder</a></li>
-                <li><a href="#">VocabularyGame</a></li>
-                <li><a href="#">Random</a></li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 <div id="map"></div>
 <script>
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    var map = L.map('map').setView([60.1671, 24.9792], 15);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);</script>
+}).addTo(map);
+
+    var api = new L.OverPassLayer({
+        endpoint: "http://overpass-api.de/api/",
+        query: "node(BBOX)[amenity=toilets];out;",
+        callback: function(data) {
+            for(var i=0;i<data.elements.length;i++) {
+                var e = data.elements[i];
+                console.log(data);
+                console.log("fuck");
+                if (e.id in this.instance._ids) return;
+                this.instance._ids[e.id] = true;
+                var pos = new L.LatLng(e.lat, e.lon);
+                var popup = this.instance._poiInfo(e.tags,e.id);
+                var color = e.tags.collection_times ? 'green':'red';
+                var circle = L.marker(pos).bindPopup(popup);
+                this.instance.addLayer(circle);
+            }
+        },
+    });
+    map.addLayer(api);
+</script>
 </body>
 </html>
