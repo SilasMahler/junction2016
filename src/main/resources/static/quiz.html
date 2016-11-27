@@ -102,6 +102,7 @@
             $('#answer2').text(quiz[selected].answers.answer2);
             $('#answer3').text(quiz[selected].answers.answer3);
             $('#answer4').text(quiz[selected].answers.answer4);
+            setTimeout(timeoutFunction, 30000);
         });
 
         function checkAnswer1() {
@@ -145,6 +146,11 @@
             document.getElementById("answer2").disabled = true;
             document.getElementById("answer3").disabled = true;
             document.getElementById("answer4").disabled = true;
+            setTimeout(timeoutFunction, 3000);
+        }
+
+        function timeoutFunction() {
+            document.location.href = "index.html";
         }
     </script>
 </body>

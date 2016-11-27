@@ -21,7 +21,7 @@
 
     <script>
         $.ajax( {
-            url: "https://api.hel.fi/linkedevents/v1/event/?start=today",
+            url: "https://api.hel.fi/linkedevents/v1/event/?start=2016-11-27&max_duration=604800&sort=start_time",
             type:"get",
             //data:{"start":"today"},
             success: function (response) {
@@ -39,6 +39,14 @@
                 }
             }
         });
+
+        $(document).ready(function(){
+            setTimeout(timeoutFunction, 30000);
+        });
+
+        function timeoutFunction() {
+            document.location.href = "index.html";
+        }
     </script>
 
 </body>
