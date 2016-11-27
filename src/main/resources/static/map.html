@@ -20,6 +20,11 @@
     }
 </style>
 <body>
+<div class="progress">
+    <div id="theBar" class="progress-bar progress-bar-info active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+
+    </div>
+</div>
 <div id="map"></div>
 <script>
     var map = L.map('map').setView([60.1671, 24.9792], 15);
@@ -47,6 +52,21 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         },
     });
     map.addLayer(api);
+
+    var i = 100;
+    var counterBack = setInterval(function () {
+        i--;
+        if (i >= 0) {
+            $('.progress-bar').css('width', i + '%');
+        } else {
+            timeoutFunction();
+        }
+
+    }, 150);
+
+    function timeoutFunction() {
+        document.location.href = "index.html";
+    }
 </script>
 </body>
 </html>
