@@ -19,6 +19,8 @@
         <ul id="newsList"></ul>
     </div>
 
+    <p>News powered by <a href="http://newsapi.org">NewsApi.org</a></p>
+
     <script>
         var api_key = "023fb6dd1a164094b8ec83a687bda79d";
         var sources = [
@@ -27,7 +29,6 @@
         var source = sources[Math.floor((Math.random() * (sources.length - 1)) + 1)];
         $.ajax( {
             url: "https://newsapi.org/v1/articles",
-            //url: "https://newsapi.org/v1/articles?source=" + theme + "&apiKey=" + api_key,
             type:"get",
             data:{"source":source,"apiKey": api_key},
             success: function (response) {
